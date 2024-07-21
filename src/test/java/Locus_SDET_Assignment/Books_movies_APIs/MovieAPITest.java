@@ -74,7 +74,7 @@ public class MovieAPITest {
 		return allQuotes_byMovie;
 	}
 //check if the dialog exists in a movie.
-
+@Test
 	public boolean checkif_dialogExistsIn(String Dialog, String movieID) {
 		List<String> allDialogs = new ArrayList<>();
 		allDialogs = getAllDialogs_fromMovie_id(movieID);

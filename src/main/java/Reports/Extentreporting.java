@@ -17,7 +17,7 @@ public class Extentreporting {
 
 		extent = new ExtentReports();
 		extent.attachReporter(reporter);
-		extent.setSystemInfo("Tester", System.getProperty("user.name"));
+		extent.setSystemInfo("Tester", "Sanket Devgahre");
 		try {
 			extent.setSystemInfo("Machine", InetAddress.getLocalHost().getHostName());
 		} catch (UnknownHostException e) {
