@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+    <line>
+      <![CDATA[If Dialog exits test is passed.]]>
+    </line>
+  </reporter-output>
+  <suite started-at="2024-07-21T01:02:13 IST" name="Default suite" finished-at="2024-07-21T01:02:14 IST" duration-ms="1350">
+    <groups>
+    </groups>
+    <test started-at="2024-07-21T01:02:13 IST" name="Default test" finished-at="2024-07-21T01:02:14 IST" duration-ms="1350">
+      <class name="TestsRunner.MovieAPITestRunner">
+        <test-method signature="verify_ifDialogExists()[pri:0, instance:TestsRunner.MovieAPITestRunner@3b1dc579]" started-at="2024-07-21T01:02:13 IST" name="verify_ifDialogExists" finished-at="2024-07-21T01:02:14 IST" duration-ms="1306" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[If Dialog exits test is passed.]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- verify_ifDialogExists -->
+      </class> <!-- TestsRunner.MovieAPITestRunner -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

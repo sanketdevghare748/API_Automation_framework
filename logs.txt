@@ -1,0 +1,54 @@
+Request method:	GET
+Request URI:	https://the-one-api.dev/v2/book
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:			<none>
+HTTP/1.1 200 OK
+Content-Length: 260
+Content-Type: application/json; charset=utf-8
+Date: Sat, 20 Jul 2024 11:07:03 GMT
+Access-Control-Allow-Origin: *
+ETag: W/"104-jNjsLom97rEwIuAO0gi264FS+6M"
+Strict-Transport-Security: max-age=15552000; includeSubDomains
+request-context: appId=cid-v1:
+Content-Security-Policy: default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+X-DNS-Prefetch-Control: off
+Expect-CT: max-age=0
+X-Frame-Options: SAMEORIGIN
+X-Download-Options: noopen
+X-Content-Type-Options: nosniff
+X-Permitted-Cross-Domain-Policies: none
+Referrer-Policy: no-referrer
+X-XSS-Protection: 0
+X-RateLimit-Limit: 100
+X-RateLimit-Remaining: 87
+X-RateLimit-Reset: 1721473926
+
+{
+    "docs": [
+        {
+            "_id": "5cf5805fb53e011a64671582",
+            "name": "The Fellowship Of The Ring"
+        },
+        {
+            "_id": "5cf58077b53e011a64671583",
+            "name": "The Two Towers"
+        },
+        {
+            "_id": "5cf58080b53e011a64671584",
+            "name": "The Return Of The King"
+        }
+    ],
+    "total": 3,
+    "limit": 1000,
+    "offset": 0,
+    "page": 1,
+    "pages": 1
+}
