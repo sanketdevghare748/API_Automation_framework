@@ -22,20 +22,20 @@ public class BooksTestsRunner {
 	@Test
 	public void verifyTotalBooks() throws FileNotFoundException {
 		Assert.assertEquals(BookResp.getTotalBookCount(), 3);
-		Reporter.log("Verify Total Book count test is passed..");
+		Reporter.log("Verify Total Book count test is passed..",true);
 	}
 
 	@Test
 	public void VerifybookIdbyname() {
 		//System.out.println(BookResp.checkIfBookExists("The Return Of The King"));
 		Assert.assertEquals(BookResp.checkIfBookExists("The Return Of The King"), "5cf58080b53e011a64671584");
-		Reporter.log("Verify BookID by bookname test is passed..");
+		Reporter.log("Verify BookID by bookname test is passed..",true);
 	}
 
 	@Test
 	public void VerifyBookNameById() {
 		//System.out.println(BookResp.checkIfBookExistsByID("5cf58080b53e011a64671584"));
 		Assert.assertEquals(BookResp.checkIfBookExistsByID("5cf58077b53e011a64671583"), "The Two Towers");
-		Reporter.log("Verify book name from book ID  test is passed..");
+		Reporter.log("Verify book name from book ID  test is passed..",true);
 	}
 }

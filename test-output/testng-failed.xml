@@ -6,6 +6,7 @@
       <class name="TestsRunner.MovieAPITestRunner">
         <methods>
           <include name="verify_ifDialogExists"/>
+          <include name="verifyMovieID_with_highest_RTSCore"/>
         </methods>
       </class> <!-- TestsRunner.MovieAPITestRunner -->
     </classes>

@@ -25,6 +25,7 @@ public class MovieAPITestRunner {
 	RequestSpecification Moviereq = RequestSpecifications.getMovieReqSpecfication();
 	static MovieAPITest movies = new MovieAPITest();
 	static String movieID_max_awards;
+	String movieID_max_RTscore;
 	static Extentreporting ext = new Extentreporting();
 	static ExtentReports test = ext.getReportObject();
 
@@ -35,36 +36,42 @@ public class MovieAPITestRunner {
 		System.out.println("Status code with out token " + movieRes.getStatusCode());
 		Assert.assertEquals(movieRes.getStatusCode(), 401);
 
-		Reporter.log("Access API without Token Key negative test is passed.");
+		Reporter.log("Access API without Token Key negative test is passed.",true);
 	}
 
-	// Test 2: Verify the total number of moview recieved in a response.
+	// Test 2: Verify the total number of moview recieved in a movie API response.
 	@Test
 	public void verifyTotalMovieCount() {
 		System.out.println("Total number of moview in response= " + movies.getCountMovies());
 		Assert.assertEquals(movies.getCountMovies(), 8);
-		Reporter.log("Verify total count is passed!!");
+		Reporter.log("Verify total count is passed!!",true);
 	}
 
-	// Test 3: Verify movie ID with highest awards.
+	// Test 3: Verify movie ID with highest awardsWon.
 	@Test
 	public void verifyMovieID_with_highest_awards_Won() {
 		movieID_max_awards = movies.getMovieId_highest_awards();
 		System.out.println("MovieID having most awards won= " + movieID_max_awards);
 		Assert.assertEquals(movieID_max_awards, "5cd95395de30eff6ebccde56");
-		Reporter.log("verifyMovieID_with_highest_awards_Won is Passed.");
+		Reporter.log("verifyMovieID_with_highest_awards_Won is Passed.",true);
+	}
+	//Test4: Verify the movie ID having maximum RTScore.
+	@Test
+	public void verifyMovieID_with_highest_RTSCore() {
+		movieID_max_RTscore= movies.getMovie_With_maxScore();
+		Assert.assertEquals(movieID_max_RTscore, "5cd95395de30eff6ebccde5b");
+		Reporter.log("verifyMovieID_with_highest_RTScore is Passed.",true);
 	}
 
 	// For the getQuote API, the API itself is not working. hence tried this one.
 	// Test 4:Verify given dialog is existing in the movieID obtained from above
 	// scenario
-	@Test
+	@Test(dependsOnMethods ="verifyMovieID_with_highest_RTSCore")
 	public void verify_ifDialogExists() {
-		movieID_max_awards = movies.getMovieId_highest_awards();
-		String Dialog = "Give us that! Deagol my love";
-		System.out.println(movieID_max_awards);
-		Assert.assertFalse(movies.checkif_dialogExistsIn(Dialog, movieID_max_awards));
-		Reporter.log("If Dialog exits test is passed.");
+		String Dialog = "Master. Master looks after us. Master wouldn't hurt us.";
+		System.out.println("Movie ID With max RTScore= "+ movieID_max_RTscore);
+		Assert.assertTrue(movies.checkif_dialogExistsIn(Dialog, movieID_max_RTscore));
+		Reporter.log("If Dialog exists test is passed.",true);
 
 	}
 

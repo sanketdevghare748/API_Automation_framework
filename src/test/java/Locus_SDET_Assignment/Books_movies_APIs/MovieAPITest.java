@@ -33,15 +33,15 @@ public class MovieAPITest {
 	static JsonPath js = new JsonPath(res.asString());
 	static List<String> allDialogs;
 	String movieID;
+//Get the total movies count coming as response.
 
-	@Test
 	public int getCountMovies() {
 		int totalAllMovies = js.getInt("total");
 		// System.out.println("Total number of movies= "+totalAllMovies);
 		return totalAllMovies;
 	}
+//Get the movieID with max awards won.
 
-	@Test
 	public String getMovieId_highest_awards() {
 		// get all the awards in the list and then get max.
 		List<Integer> list_awards = new ArrayList<>();
@@ -59,28 +59,62 @@ public class MovieAPITest {
 		movieID = js.getString("docs[" + a + "]._id");
 		return movieID;
 	}
+//Get the movie ID with mximum Rotten tomatoes Score.
 
-//get quote of the movie from the movie ID.
-	@Test
-	public List<String> getAllDialogs_fromMovie_id(String movieId) {
-		Response resQuotes = given().spec(MovieReq).header("Authorization", BearerToken).queryParam("movie", movieId)
+	public String getMovie_With_maxScore() {
+		// get all the awards in the list and then get max.
+		List<Integer> list_scores = new ArrayList<>();
+		int total = js.getInt("total");
+
+		for (int i = 0; i < total; i++) {
+
+			double RTScore = js.getDouble("docs[" + i + "].rottenTomatoesScore");
+			
+			list_scores.add((int) RTScore);
+
+		}
+		int max = Collections.max(list_scores);
+
+		int a = list_scores.indexOf(max);
+
+		movieID = js.getString("docs[" + a + "]._id");
+		return movieID;
+	}
+
+//get all the dialogs from movie based on movie ID.
+
+	public static List<String> getAllDialogs(String movieid) {
+
+		Response resQuotes = given().spec(MovieReq).header("Authorization", BearerToken).queryParam("movie", movieid)
 				.when().get("/quote").then().extract().response();
+		
 		List<String> allQuotes_byMovie = new ArrayList<>();
 		JsonPath jquote = new JsonPath(resQuotes.asString());
 		int totalQuote_movie = jquote.getInt("total");
 		for (int i = 0; i < totalQuote_movie; i++) {
+			
+			if(jquote.getString("docs[" + i + "].dialog") != null)
+			{
 			allQuotes_byMovie.add(jquote.getString("docs[" + i + "].dialog"));
+			}
 		}
+		// System.out.println(allQuotes_byMovie);
 		return allQuotes_byMovie;
+
 	}
-//check if the dialog exists in a movie.
-@Test
+
+//check if the dialog exists in a movie given Dialog and movie ID.
+
 	public boolean checkif_dialogExistsIn(String Dialog, String movieID) {
 		List<String> allDialogs = new ArrayList<>();
-		allDialogs = getAllDialogs_fromMovie_id(movieID);
-		// System.out.println(allDialogs);
-		if (allDialogs.contains(Dialog)) {
-			return true;
+		allDialogs = getAllDialogs(movieID);
+	
+		for(String dialog:allDialogs)
+		{
+			if(Dialog.equalsIgnoreCase(dialog))
+			{
+				return true;
+			}
 		}
 		return false;
 	}
