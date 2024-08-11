@@ -7,9 +7,8 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
 public class Extentreporting {
-	public static ExtentReports extent;
-
-	public static ExtentReports getReportObject() {
+	public  static ExtentReports extent;
+	public  static ExtentReports getReportObject() {
 		String path = System.getProperty("user.dir") + "//Reports//report.html";
 		ExtentSparkReporter reporter = new ExtentSparkReporter(path);
 		reporter.config().setReportName("Automation Results");
@@ -17,7 +16,7 @@ public class Extentreporting {
 
 		extent = new ExtentReports();
 		extent.attachReporter(reporter);
-		extent.setSystemInfo("Tester", "Sanket Devgahre");
+		extent.setSystemInfo("Tester", "Sanket Devghare");
 		try {
 			extent.setSystemInfo("Machine", InetAddress.getLocalHost().getHostName());
 		} catch (UnknownHostException e) {
