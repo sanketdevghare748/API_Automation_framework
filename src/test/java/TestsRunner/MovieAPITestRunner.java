@@ -72,7 +72,6 @@ public class MovieAPITestRunner {
 		System.out.println("Movie ID With max RTScore= "+ movieID_max_RTscore);
 		Assert.assertTrue(movies.checkif_dialogExistsIn(Dialog, movieID_max_RTscore));
 		Reporter.log("If Dialog exists test is passed.",true);
-
 	}
 
 }
